@@ -33,20 +33,20 @@ BookWave is a modern, responsive e-commerce application designed for selling boo
 
 ## ⚙️ Installation
 
-1.  **Clone the repository** to your local server (e.g., Laragon/XAMPP `www` or `htdocs` folder).
-2.  **Import Database:**
-    - Create a MySQL database named `shop_db`.
-    - Import the `shop_db.sql` file located in the root directory.
-3.  **Configure Database:**
-    - Open `config/database.php`.
-    - Ensure the `BASE_URL` matches your local setup.
-    - Update DB credentials if necessary.
-4.  **Run:**
-    - Access the site via your browser (e.g., `http://bookwave.test/public` or `http://localhost/bookwave/public`).
+1. **Clone the repository** to your local server (e.g., Laragon/XAMPP `www` or `htdocs` folder).
+2. **Import Database:**
+   - Create a MySQL database named `shop_db`.
+   - Import the `shop_db.sql` file located in the root directory.
+3. **Configure Database:**
+   - Open `config/database.php`.
+   - Ensure the `BASE_URL` matches your local setup.
+   - Update DB credentials if necessary.
+4. **Run:**
+   - Access the site via your browser (e.g., `http://bookwave.test/public` or `http://localhost/bookwave/public`).
 
 ## 📁 Project Structure
 
-```
+```text
 bookwave/
 ├── app/
 │   ├── Controllers/  # Logic (Admin & Public)
