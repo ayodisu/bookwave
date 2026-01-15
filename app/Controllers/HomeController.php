@@ -15,12 +15,10 @@ class HomeController extends Controller
     }
 
     /**
-     * Homepage
+     * Homepage (public - no login required)
      */
     public function index()
     {
-        $this->requireLogin();
-
         $message = null;
 
         // Handle add to cart

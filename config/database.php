@@ -10,7 +10,7 @@ define('DB_PASS', '');
 define('DB_NAME', 'bookwave');
 
 // Base URL for the application
-define('BASE_URL', '/bookwave/public');
+define('BASE_URL', '/public');
 
 // App settings
 define('APP_NAME', 'BookWave');
