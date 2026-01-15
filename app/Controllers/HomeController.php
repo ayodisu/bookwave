@@ -25,6 +25,8 @@ class HomeController extends Controller
         if ($this->isPost() && isset($_POST['add_to_cart'])) {
             if (!$this->verifyCsrf()) {
                 $message = ['type' => 'error', 'text' => 'Invalid request.'];
+            } elseif (!$this->isLoggedIn()) {
+                $this->redirect('login');
             } else {
                 $userId = $_SESSION['user_id'];
                 $productName = trim($_POST['product_name'] ?? '');

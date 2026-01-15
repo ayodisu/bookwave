@@ -9,8 +9,16 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'bookwave');
 
-// Base URL for the application
-define('BASE_URL', '/public');
+// Dynamic Base URL
+$host = $_SERVER['HTTP_HOST'];
 
-// App settings
+if (strpos($host, 'localhost') !== false) {
+
+    define('BASE_URL', '/bookwave/public');
+
+} else {
+    
+    define('BASE_URL', '/public');
+}
+
 define('APP_NAME', 'BookWave');

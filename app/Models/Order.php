@@ -23,7 +23,12 @@ class Order extends Model
             $data['total_price'],
             $data['placed_on']
         );
-        return $stmt->execute();
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            error_log("Order Create Error: " . $stmt->error);
+            return $stmt->error;
+        }
     }
 
     /**

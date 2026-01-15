@@ -891,6 +891,154 @@ section {
   margin-bottom: 2rem;
 }
 
+/* ==================== Contact Links Section ==================== */
+.contact-links-section {
+    text-align: center;
+    padding-bottom: 8rem;
+}
+
+.contact-links-section .section-desc {
+    font-size: 1.6rem;
+    color: var(--gray);
+    margin-bottom: 4rem;
+    margin-top: -2rem;
+}
+
+.contact-links-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.contact-link-card {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    transition: var(--transition);
+    border: 1px solid var(--lighter);
+    text-align: left;
+}
+
+.contact-link-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+
+.contact-link-card .icon {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--white);
+    flex-shrink: 0;
+}
+
+.contact-link-card .text h3 {
+    font-size: 1.8rem;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+}
+
+.contact-link-card .text span {
+    font-size: 1.4rem;
+    color: var(--gray);
+}
+
+/* Brand Colors */
+.contact-link-card.whatsapp .icon { background: #25D366; }
+.contact-link-card.whatsapp:hover { border-top: 4px solid #25D366; }
+
+.contact-link-card.email .icon { background: var(--primary); }
+.contact-link-card.email:hover { border-top: 4px solid var(--primary); }
+
+.contact-link-card.twitter .icon { background: #1DA1F2; }
+.contact-link-card.twitter:hover { border-top: 4px solid #1DA1F2; }
+
+.contact-link-card.linkedin .icon { background: #0077B5; }
+.contact-link-card.linkedin:hover { border-top: 4px solid #0077B5; }
+
+
+/* ==================== Developer Intro Section ==================== */
+.developer-intro {
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  padding: 6rem 2rem;
+}
+
+.intro-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.intro-content .intro-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--white);
+  padding: 0.8rem 2rem;
+  border-radius: 3rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.intro-content h2 {
+  font-size: 4rem;
+  color: var(--black);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.intro-content p {
+  font-size: 1.7rem;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.intro-skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.skill-tag {
+  background: var(--white);
+  color: var(--primary);
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius);
+  font-size: 1.3rem;
+  font-weight: 600;
+  border: 2px solid var(--primary);
+  transition: var(--transition);
+}
+
+.skill-tag:hover {
+  background: var(--primary);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Contact Form Subtitle */
+.contact-form .form-subtitle {
+  font-size: 1.5rem;
+  color: var(--gray);
+  margin-bottom: 2rem;
+  margin-top: -1rem;
+}
+
 /* ==================== Reviews ==================== */
 .reviews {
   background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
@@ -1269,14 +1417,14 @@ section {
 /* ==================== Footer ==================== */
 .footer {
   background: linear-gradient(135deg, var(--black), #111827);
-  padding: 4rem 2rem 2rem;
+  padding: 5rem 2rem 2rem;
 }
 
 .footer .box-container {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
   gap: 3rem;
 }
 
@@ -1298,23 +1446,74 @@ section {
   border-radius: 2px;
 }
 
+.footer .box-container .box .footer-about {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: var(--light-gray);
+  margin-bottom: 1.5rem;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.footer-socials a {
+  width: 4rem;
+  height: 4rem;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--light-gray);
+  font-size: 1.6rem;
+  transition: var(--transition);
+  padding: 0 !important;
+}
+
+.footer-socials a:hover {
+  background: var(--primary);
+  color: var(--white);
+  transform: translateY(-3px);
+  padding-left: 0 !important;
+}
+
 .footer .box-container .box a,
 .footer .box-container .box p {
   display: block;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--light-gray);
-  padding: 0.8rem 0;
+  padding: 0.6rem 0;
   transition: var(--transition);
 }
 
 .footer .box-container .box a i {
-  margin-right: 1rem;
+  margin-right: 0.8rem;
   color: var(--primary-light);
 }
 
 .footer .box-container .box a:hover {
   color: var(--white);
-  padding-left: 1rem;
+  padding-left: 0.8rem;
+}
+
+.footer-cta {
+  display: inline-block !important;
+  margin-top: 1rem;
+  padding: 1rem 2rem !important;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--white) !important;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1.3rem !important;
+}
+
+.footer-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  padding-left: 2rem !important;
 }
 
 .footer .credit {
@@ -1322,13 +1521,23 @@ section {
   padding-top: 3rem;
   margin-top: 3rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--light-gray);
 }
 
 .footer .credit span {
   color: var(--primary-light);
   font-weight: 600;
+}
+
+.footer .credit .heart {
+  color: var(--danger);
+  animation: heartbeat 1.5s ease infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
 
 /* ==================== Search Form ==================== */

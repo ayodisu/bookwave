@@ -26,7 +26,7 @@ class OrderController extends Controller
         $success = false;
 
         // Handle order submission
-        if ($this->isPost() && isset($_POST['place_order'])) {
+        if ($this->isPost()) {
             if (!$this->verifyCsrf()) {
                 $message = ['type' => 'error', 'text' => 'Invalid request.'];
             } else {
@@ -57,25 +57,38 @@ class OrderController extends Controller
                     }
                     $totalProducts = implode(', ', $products);
 
-                    // Create order
-                    $result = $this->orderModel->create([
-                        'user_id' => $userId,
-                        'name' => $name,
-                        'number' => $number,
-                        'email' => $email,
-                        'method' => $method,
-                        'address' => $address,
-                        'total_products' => $totalProducts,
-                        'total_price' => $totalPrice,
-                        'placed_on' => date('Y-m-d H:i:s')
-                    ]);
-
-                    if ($result) {
-                        $this->cartModel->clearCart($userId);
-                        $message = ['type' => 'success', 'text' => 'Order placed successfully!'];
-                        $success = true;
+                    // Validate constraints
+                    if (strlen($number) > 12) {
+                        $message = ['type' => 'error', 'text' => 'Phone number is too long (Max 12 digits).'];
+                    } elseif (strlen($name) > 100) {
+                        $message = ['type' => 'error', 'text' => 'Name is too long (Max 100 chars).'];
+                    } elseif (strlen($email) > 100) {
+                        $message = ['type' => 'error', 'text' => 'Email is too long (Max 100 chars).'];
+                    } elseif (strlen($address) > 500) {
+                        $message = ['type' => 'error', 'text' => 'Address is too long (Max 500 chars).'];
+                    } elseif (strlen($totalProducts) > 1000) {
+                        $message = ['type' => 'error', 'text' => 'Too many items in cart for one order. Please split order.'];
                     } else {
-                        $message = ['type' => 'error', 'text' => 'Failed to place order.'];
+                        // Create order
+                        $result = $this->orderModel->create([
+                            'user_id' => $userId,
+                            'name' => $name,
+                            'number' => $number,
+                            'email' => $email,
+                            'method' => $method,
+                            'address' => $address,
+                            'total_products' => $totalProducts,
+                            'total_price' => $totalPrice,
+                            'placed_on' => date('Y-m-d H:i:s')
+                        ]);
+
+                        if ($result === true) {
+                            $this->cartModel->clearCart($userId);
+                            $_SESSION['toast'] = 'Order placed successfully!';
+                            $this->redirect('orders');
+                        } else {
+                            $message = ['type' => 'error', 'text' => 'Failed to place order: ' . $result];
+                        }
                     }
                 }
             }

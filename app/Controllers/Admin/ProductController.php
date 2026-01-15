@@ -107,8 +107,8 @@ class ProductController extends \Controller
 
             // Delete old image
             $oldProduct = $this->productModel->find($id);
-            if ($oldProduct && file_exists('../uploaded_img/' . $oldProduct['image'])) {
-                unlink('../uploaded_img/' . $oldProduct['image']);
+            if ($oldProduct && file_exists('uploaded_img/' . $oldProduct['image'])) {
+                unlink('uploaded_img/' . $oldProduct['image']);
             }
         }
 
@@ -130,8 +130,8 @@ class ProductController extends \Controller
 
         // Delete image
         $product = $this->productModel->find($id);
-        if ($product && file_exists('../uploaded_img/' . $product['image'])) {
-            unlink('../uploaded_img/' . $product['image']);
+        if ($product && file_exists('uploaded_img/' . $product['image'])) {
+            unlink('uploaded_img/' . $product['image']);
         }
 
         $this->productModel->delete($id);
@@ -165,7 +165,7 @@ class ProductController extends \Controller
         $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
         $filename = uniqid('product_') . '.' . $ext;
 
-        if (move_uploaded_file($file['tmp_name'], '../uploaded_img/' . $filename)) {
+        if (move_uploaded_file($file['tmp_name'], 'uploaded_img/' . $filename)) {
             return $filename;
         }
 

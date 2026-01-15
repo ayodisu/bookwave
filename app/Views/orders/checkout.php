@@ -11,6 +11,13 @@
     <div class="grand-total">Grand Total: <span><?php echo format_price($grandTotal); ?></span></div>
 </section>
 
+<?php if (isset($message) && $message): ?>
+    <div class="message <?php echo $message['type']; ?>" style="margin: 0 auto 2rem; max-width: 1200px; padding: 1.5rem; border-radius: 0.5rem; background-color: <?php echo $message['type'] == 'error' ? '#fee2e2' : '#dcfce7'; ?>; color: <?php echo $message['type'] == 'error' ? '#991b1b' : '#166534'; ?>; border: 1px solid <?php echo $message['type'] == 'error' ? '#fecaca' : '#bbf7d0'; ?>; display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-size: 1.4rem; font-weight: 500;"><?php echo e($message['text']); ?></span>
+        <i class="fas fa-times" onclick="this.parentElement.style.display='none';" style="cursor: pointer; font-size: 1.4rem;"></i>
+    </div>
+<?php endif; ?>
+
 <?php if ($grandTotal > 0 && !$success): ?>
     <section class="checkout">
         <form action="<?php echo url('checkout'); ?>" method="post">
@@ -19,47 +26,47 @@
             <div class="flex">
                 <div class="inputBox">
                     <span>Your Name:</span>
-                    <input type="text" name="name" required placeholder="Enter your name" value="<?php echo e($_SESSION['user_name'] ?? ''); ?>">
+                    <input type="text" name="name" required placeholder="Enter your name" value="<?php echo e($_POST['name'] ?? $_SESSION['user_name'] ?? ''); ?>">
                 </div>
                 <div class="inputBox">
                     <span>Your Number:</span>
-                    <input type="tel" name="number" required placeholder="Enter your number">
+                    <input type="tel" name="number" required placeholder="Enter your number" value="<?php echo e($_POST['number'] ?? $_SESSION['user_number'] ?? ''); ?>">
                 </div>
                 <div class="inputBox">
                     <span>Your Email:</span>
-                    <input type="email" name="email" required placeholder="Enter your email" value="<?php echo e($_SESSION['user_email'] ?? ''); ?>">
+                    <input type="email" name="email" required placeholder="Enter your email" value="<?php echo e($_POST['email'] ?? $_SESSION['user_email'] ?? ''); ?>">
                 </div>
                 <div class="inputBox">
                     <span>Payment Method:</span>
                     <select name="method" required>
-                        <option value="cash on delivery">Cash on Delivery</option>
-                        <option value="credit card">Credit Card</option>
-                        <option value="bank transfer">Bank Transfer</option>
+                        <option value="cash on delivery" <?php echo (isset($_POST['method']) && $_POST['method'] == 'cash on delivery') ? 'selected' : ''; ?>>Cash on Delivery</option>
+                        <option value="credit card" <?php echo (isset($_POST['method']) && $_POST['method'] == 'credit card') ? 'selected' : ''; ?>>Credit Card</option>
+                        <option value="bank transfer" <?php echo (isset($_POST['method']) && $_POST['method'] == 'bank transfer') ? 'selected' : ''; ?>>Bank Transfer</option>
                     </select>
                 </div>
                 <div class="inputBox">
                     <span>Flat/House No:</span>
-                    <input type="text" name="flat" required placeholder="e.g. Flat 123">
+                    <input type="text" name="flat" required placeholder="e.g. Flat 123" value="<?php echo e($_POST['flat'] ?? ''); ?>">
                 </div>
                 <div class="inputBox">
                     <span>Street:</span>
-                    <input type="text" name="street" required placeholder="e.g. Main Street">
+                    <input type="text" name="street" required placeholder="e.g. Main Street" value="<?php echo e($_POST['street'] ?? ''); ?>">
                 </div>
                 <div class="inputBox">
                     <span>City:</span>
-                    <input type="text" name="city" required placeholder="e.g. Lagos">
+                    <input type="text" name="city" required placeholder="e.g. Lagos" value="<?php echo e($_POST['city'] ?? ''); ?>">
                 </div>
                 <div class="inputBox">
                     <span>State:</span>
-                    <input type="text" name="state" required placeholder="e.g. Lagos State">
+                    <input type="text" name="state" required placeholder="e.g. Lagos State" value="<?php echo e($_POST['state'] ?? ''); ?>">
                 </div>
                 <div class="inputBox">
                     <span>Country:</span>
-                    <input type="text" name="country" required placeholder="e.g. Nigeria">
+                    <input type="text" name="country" required placeholder="e.g. Nigeria" value="<?php echo e($_POST['country'] ?? ''); ?>">
                 </div>
                 <div class="inputBox">
                     <span>Pin Code:</span>
-                    <input type="text" name="pin_code" required placeholder="e.g. 100001">
+                    <input type="text" name="pin_code" required placeholder="e.g. 100001" value="<?php echo e($_POST['pin_code'] ?? ''); ?>">
                 </div>
             </div>
             <button type="submit" name="place_order" class="btn submit-btn">

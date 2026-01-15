@@ -50,9 +50,9 @@
 
 <section class="home-contact">
     <div class="content">
-        <h3>Have Any Questions?</h3>
-        <p>We're here to help! Reach out to us with any questions about our books or services.</p>
-        <a href="<?php echo url('contact'); ?>" class="white-btn">Contact Us</a>
+        <h3>Want to Build Something Amazing?</h3>
+        <p>This is a portfolio project. If you need a website, web app, or custom software — let's talk!</p>
+        <a href="<?php echo url('contact'); ?>" class="white-btn">Hire Me</a>
     </div>
 </section>
 

@@ -26,7 +26,7 @@ class ShopController extends Controller
         // Handle add to cart
         if ($this->isPost() && isset($_POST['add_to_cart'])) {
             if (!$this->isLoggedIn()) {
-                $message = ['type' => 'error', 'text' => 'Please login to add items to cart!'];
+                $this->redirect('login');
             } elseif (!$this->verifyCsrf()) {
                 $message = ['type' => 'error', 'text' => 'Invalid request.'];
             } else {
