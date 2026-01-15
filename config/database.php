@@ -15,7 +15,6 @@ $host = $_SERVER['HTTP_HOST'];
 if (strpos($host, 'localhost') !== false) {
 
     define('BASE_URL', '/bookwave/public');
-
 } else {
     
     define('BASE_URL', '/public');

@@ -69,7 +69,7 @@ class ProductController extends \Controller
         // Handle image upload
         $image = $this->handleImageUpload();
         if (is_array($image)) {
-            return $image; // Error message
+            return $image;
         }
 
         $this->productModel->create([
