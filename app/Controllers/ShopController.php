@@ -24,7 +24,7 @@ class ShopController extends Controller
         $perPage = 9;
 
         // Handle add to cart
-        if ($this->isPost() && isset($_POST['add_to_cart'])) {
+        if ($this->isPost()) {
             if (!$this->isLoggedIn()) {
                 $this->redirect('login');
             } elseif (!$this->verifyCsrf()) {

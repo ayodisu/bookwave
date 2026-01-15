@@ -24,7 +24,7 @@ class OrderController extends \Controller
         $message = null;
 
         // Handle update status
-        if ($this->isPost() && isset($_POST['update_status'])) {
+        if ($this->isPost() && isset($_POST['status'])) {
             if (!$this->verifyCsrf()) {
                 $message = ['type' => 'error', 'text' => 'Invalid request.'];
             } else {

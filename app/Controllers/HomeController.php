@@ -22,7 +22,7 @@ class HomeController extends Controller
         $message = null;
 
         // Handle add to cart
-        if ($this->isPost() && isset($_POST['add_to_cart'])) {
+        if ($this->isPost()) {
             if (!$this->verifyCsrf()) {
                 $message = ['type' => 'error', 'text' => 'Invalid request.'];
             } elseif (!$this->isLoggedIn()) {

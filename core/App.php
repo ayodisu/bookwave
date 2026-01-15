@@ -74,6 +74,7 @@ class App
             'orders/update' => ['Admin\\OrderController', 'update'],
             'orders/delete' => ['Admin\\OrderController', 'delete'],
             'users' => ['Admin\\UserController', 'index'],
+            'users/orders' => ['Admin\\UserController', 'orders'],
             'messages' => ['Admin\\MessageController', 'index'],
         ];
 

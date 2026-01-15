@@ -3,6 +3,13 @@
     <p><a href="<?php echo url('home'); ?>">Home</a> / Shop</p>
 </div>
 
+<?php if (isset($message) && $message): ?>
+    <div class="message <?php echo $message['type']; ?>" style="margin: 2rem auto; max-width: 1200px; padding: 1.5rem; border-radius: 0.5rem; background-color: <?php echo $message['type'] == 'error' ? '#fee2e2' : '#dcfce7'; ?>; color: <?php echo $message['type'] == 'error' ? '#991b1b' : '#166534'; ?>; border: 1px solid <?php echo $message['type'] == 'error' ? '#fecaca' : '#bbf7d0'; ?>; display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-size: 1.4rem; font-weight: 500;"><?php echo e($message['text']); ?></span>
+        <i class="fas fa-times" onclick="this.parentElement.style.display='none';" style="cursor: pointer; font-size: 1.4rem;"></i>
+    </div>
+<?php endif; ?>
+
 <section class="products">
     <h1 class="title">All Products</h1>
     <p style="text-align:center; font-size:1.6rem; color:var(--light-color); margin-bottom:2rem;">

@@ -44,6 +44,9 @@
                             </td>
                             <td style="color: #64748b;">#<?php echo $user['id']; ?></td>
                             <td>
+                                <a href="<?php echo url('admin/users/orders?id=' . $user['id']); ?>" class="action-btn edit" title="View Orders" style="margin-right: 0.5rem;">
+                                    <i class="fas fa-box"></i>
+                                </a>
                                 <?php if ($user['id'] !== $_SESSION['admin_id']): ?>
                                     <form action="<?php echo url('admin/users'); ?>" method="post" style="display:inline;">
                                         <?php echo csrf_field(); ?>
