@@ -42,7 +42,7 @@ BookWave is a modern, responsive e-commerce application designed for selling boo
    - Ensure the `BASE_URL` matches your local setup.
    - Update DB credentials if necessary.
 4. **Run:**
-   - Access the site via your browser (e.g., `http://bookwave.test/public` or `http://localhost/bookwave/public`).
+   - Access the site via your browser (e.g., `http://localhost/bookwave/public`).
 
 ## 📁 Project Structure
 

@@ -15,9 +15,8 @@ class App
     {
         $url = $this->parseUrl();
 
-        // Check for admin routes
         if (isset($url[0]) && $url[0] === 'admin') {
-            array_shift($url); // Remove 'admin'
+            array_shift($url);
             $this->handleAdminRoute($url);
         } else {
             $this->handleRoute($url);
@@ -26,7 +25,6 @@ class App
 
     protected function handleRoute($url)
     {
-        // Map URLs to controllers
         $routes = [
             '' => ['HomeController', 'index'],
             'home' => ['HomeController', 'index'],
@@ -118,9 +116,21 @@ class App
 
     protected function parseUrl()
     {
-        if (isset($_GET['url'])) {
-            return explode('/', filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));
+        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        
+        $scriptPath = dirname($_SERVER['SCRIPT_NAME']); 
+        
+        $scriptPath = str_replace('\\', '/', $scriptPath);
+        
+        if (strpos($uri, $scriptPath) === 0 && $scriptPath !== '/') {
+            $uri = substr($uri, strlen($scriptPath));
         }
+        $uri = trim($uri, '/');
+
+        if (!empty($uri)) {
+            return explode('/', filter_var($uri, FILTER_SANITIZE_URL));
+        }
+        
         return [];
     }
 
